@@ -1,17 +1,24 @@
+<!-- filepath: c:\Users\Jthr\Desktop\laravel-app\resources\views\tasks\create.blade.php -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tasks</title>
+    <title>Create Task</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-6">
-    <h1 class="text-2xl font-bold mb-4">Tasks List</h1>
-    <a href="{{ route('tasks.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Create New Task</a>
-    <ul class="bg-white p-6 rounded shadow-md">
-        @foreach ($tasks as $task)
-            <li class="mb-2">{{ $task->title }}</li>
-        @endforeach
-    </ul>
+    <h1 class="text-2xl font-bold mb-4">Create Task</h1>
+    <form action="{{ route('tasks.store') }}" method="POST" class="bg-white p-6 rounded shadow-md">
+        @csrf
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700">Title:</label>
+            <input type="text" id="title" name="title" required class="w-full p-2 border border-gray-300 rounded mt-1">
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700">Description:</label>
+            <textarea id="description" name="description" class="w-full p-2 border border-gray-300 rounded mt-1"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Create</button>
+    </form>
 
     <div class="mt-6">
         <h2 class="text-xl font-semibold mb-2">Navigation</h2>
